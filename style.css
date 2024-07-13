@@ -1,3 +1,11 @@
+body {
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+
+}
 /* Ensure to target the correct classes */
 .logo-container {
   display: flex;
@@ -49,4 +57,18 @@
 }
 .filter-btn{
   margin: 8px;
+}
+.positionAdj{
+  margin-top: 40px;
+}
+.cardImage{
+  height: 150px;
+  width: 250px;
+  background-color: #c7c7c7;
+}
+.reName{
+  height: 25px;
+  width: 230px;
+  background-color: #c7c7c7;
+  margin-top: 25px;
 }

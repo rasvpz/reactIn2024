@@ -365,4 +365,5 @@ let restaurants =
           }
         }    
     ]
+    
 export default restaurants

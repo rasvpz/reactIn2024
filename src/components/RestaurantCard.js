@@ -11,7 +11,7 @@ const bgStyle = {
         return (
             <div className="res-card">
             <img style={bgStyle} src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_250,h_150/"+cloudinaryImageId} alt="rest-pic" />
-                <h3>{name}</h3>
+                <h4>{name}</h4>
                 <p>{cuisines.join(', ')}</p>
                 <p>{avgRating}</p>
             </div>
