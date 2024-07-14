@@ -31,7 +31,7 @@ const Body = () => {
   };
 
   const handleFilter = () => {
-    const avrageRatingData = restaurantData.filter((res) => res?.info?.avgRating > 4.3);
+    const avrageRatingData = restaurantData.filter((res) => res?.info?.avgRating > 3);
     setFilteredData(avrageRatingData);
   };
 
