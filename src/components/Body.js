@@ -12,7 +12,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=10.788949&lng=76.6542664&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
     const json = await data.json();
     const restaurants = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     setRestaurantData(restaurants);
@@ -31,12 +31,12 @@ const Body = () => {
   };
 
   const handleFilter = () => {
-    const avrageRatingData = restaurantData.filter((res) => res?.info?.avgRating > 3);
+    const avrageRatingData = restaurantData.filter((res) => res?.info?.avgRating > 4.3);
     setFilteredData(avrageRatingData);
   };
 
   return (
-    filteredData.length === 0 ? <Shimmer /> : 
+    filteredData?.length === 0 ? <Shimmer /> : 
     <div className="body">
       <div className="filter">
         <div className="search">
