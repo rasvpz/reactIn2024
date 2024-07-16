@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import RestaurantMenu from "./components/RestaurantMenu"
 // css Object start here
 
 const AppLayout = () => {
@@ -36,6 +37,12 @@ const appRouter = createBrowserRouter([
         {    
             path: "/contact",
             element: <Contact />,
+            errorElement:<Error />,
+        },
+        // Dynamic Routes Starts below
+        {    
+            path: "/restaurants/:resId",
+            element: <RestaurantMenu />,
             errorElement:<Error />,
         },
     ]

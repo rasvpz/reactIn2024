@@ -7,7 +7,6 @@ const bgStyle = {
 // const RestaurantCard = ({resName, Cuisines}) => 
     const RestaurantCard = (props) => {
         const{name, cuisines, cloudinaryImageId, avgRating} = props?.resData?.info
-        // console.log(props?.resData?.info?.id)
         return (
             <div className="res-card">
             <img style={bgStyle} src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_250,h_150/"+cloudinaryImageId} alt="rest-pic" />
