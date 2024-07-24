@@ -1,10 +1,13 @@
 import { useState } from "react";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Header = () => {
   const [logButton, setLogButton] = useState("LogIn");
+  const status = useOnlineStatus()
+
   return (
     <div className="header">
       <div className="logo-container">
@@ -29,6 +32,11 @@ const Header = () => {
             >
               {logButton}
             </button>
+          </li>
+          <li>
+          <button style={status === true ? {backgroundColor: 'green', color: 'white'} : {backgroundColor: 'red', color: 'white'}}>
+            {status === true ? 'Online' : 'Offline'}
+          </button>
           </li>
         </ul>
       </div>
