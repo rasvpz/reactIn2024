@@ -9,21 +9,21 @@ const Header = () => {
   const status = useOnlineStatus()
 
   return (
-    <div className="header">
-      <div className="logo-container">
-        <img src={logo} alt="Logo" className="logo" />
-        <span className="logo-name"> Laayi</span>
+    <div className="flex justify-between bg-pink-100 shadow-lg">
+      <div className="flex">
+        <img src={logo} alt="Logo"  className="w-16 h-16 m-4"/>
+        <h3 className="pt-8 pl-2"> Laayi</h3>
       </div>
 
-      <div className="nav-items">
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About us </Link></li>
-          <li><Link to="/product">Product</Link></li>
-          <li><Link to="/contact">Contact us</Link></li>
-          <li><Link to="/grocery">Grocery</Link></li>
-          <li><Link to="/cart">Cart</Link></li>
-          <li>
+      <div>
+        <ul  className="flex p-8">
+          <li className="ml-4"><Link to="/">Home</Link></li>
+          <li className="ml-4"><Link to="/about">About us </Link></li>
+          <li className="ml-4"><Link to="/product">Product</Link></li>
+          <li className="ml-4"><Link to="/contact">Contact us</Link></li>
+          <li className="ml-4"><Link to="/grocery">Grocery</Link></li>
+          <li className="ml-4"><Link to="/cart">Cart</Link></li>
+          <li className="ml-4">
             <button
               onClick={() =>
                 logButton === "LogIn"
@@ -34,9 +34,9 @@ const Header = () => {
               {logButton}
             </button>
           </li>
-          <li>
-          <button style={status === true ? {backgroundColor: 'green', color: 'white'} : {backgroundColor: 'red', color: 'white'}}>
-            {status === true ? 'Online' : 'Offline'}
+          <li className="ml-4">
+          <button style={status === true ? {backgroundColor: 'green', color: 'white', padding:2} : {backgroundColor: 'red', color: 'white',padding:2}}>
+            {status === true ? ' Online ' : ' Offline '}
           </button>
           </li>
         </ul>

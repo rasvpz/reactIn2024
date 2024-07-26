@@ -40,18 +40,17 @@ const Body = () => {
   return (
     filteredData?.length === 0 ? <Shimmer /> : 
     <div className="body">
-      <div className="filter">
-        <div className="search">
-          <input 
+      <div className="flex m-4">
+        <div>
+          <input className="ml-1 border border-black-900 mr-4 " 
             type="text" 
-            className="searchme" 
             value={searchMe} 
             onChange={handleSearch}
           />
         </div>
-        <button className="filter-btn" onClick={handleFilter}>Top rated restaurant</button>
+        <button  className="px-4 bg-green-100 filter-btn rounded-lg" onClick={handleFilter}>Top rated restaurant</button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredData.map((restList) => (
          <Link key={restList.info.id} to={"/restaurants/"+restList.info.id}> <RestaurantCard resData={restList} id={restList.info.id} /></Link>
         ))}
