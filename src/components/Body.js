@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromptedLabel} from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ const Body = () => {
   const [restaurantData, setRestaurantData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchMe, setSearchMe] = useState('');
+  const RestaurantCardPrompted = withPromptedLabel(RestaurantCard)
 
   useEffect(() => {
     fetchData();
@@ -52,7 +53,15 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap">
         {filteredData.map((restList) => (
-         <Link key={restList.info.id} to={"/restaurants/"+restList.info.id}> <RestaurantCard resData={restList} id={restList.info.id} /></Link>
+         <Link key={restList.info.id} to={"/restaurants/"+restList.info.id}> 
+          { 
+            restList?.info?.sla?.lastMileTravel < 2.5 ? (
+              <RestaurantCardPrompted resData={restList}/> 
+              ) : (
+                <RestaurantCard resData={restList} id={restList.info.id} />
+                )
+          }
+         </Link>
         ))}
       </div>
     </div>

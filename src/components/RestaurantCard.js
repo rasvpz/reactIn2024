@@ -19,4 +19,18 @@ const bgStyle = {
 
         )
     }
+
+    // Higher order component
+    export const withPromptedLabel =(RestaurantCard) => {
+        return (props) => {
+            console.log('myProps', props)
+            return (
+                <div>
+                    <label className="absolute bg-black text-yellow-50 ml-4 mt-1 p-2">Deliverable</label>
+                    <RestaurantCard {...props}/>
+                </div>
+            )
+        }
+    }
+
     export default RestaurantCard
