@@ -1,17 +1,25 @@
+import { useState } from "react";
 import AccordionsItemLists from "./AccordionsItemLists";
 
-const RestaurantCategory = (data) => {
+const RestaurantCategory = ({data,showItem, setShowIndex}) => {
+    console.log("onClick", showItem)
+    // const  [hideShow, setHideShow] = useState(showItem)
+
+    const showHide = () => {
+        setShowIndex()
+    }
+
     const downArrowhead = '\u25BC';
     return (
         <div>
           <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4">
-            <div className="flex justify-between">
+            <div className="flex justify-between cursor-pointer" onClick={showHide}>
             <span className="font-bold text-lg">
-                {data?.data?.title} ({data?.data?.itemCards?.length})
+                {data?.title} ({data?.itemCards?.length})
             </span>
-            <span>{downArrowhead}</span>
+            <span>{showItem ? downArrowhead : "^"}</span>
             </div>
-            <AccordionsItemLists items = {data?.data?.itemCards}/>
+            {showItem && <AccordionsItemLists items = {data?.itemCards} />}
           </div>
         </div>
     )

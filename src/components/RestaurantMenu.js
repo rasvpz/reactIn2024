@@ -2,11 +2,13 @@ import  useRetaurantMenu from '../utils/useRetaurantMenu'
 import  useCustomHookWithHigherOrderFun from '../utils/useCustomHookWithHigherOrderFun'
 import RestaurantCategory from './RestaurantCategory';
 import { useParams } from "react-router-dom";
+import { useState } from 'react';
 
 const RestaurantMenu = () => {
   const { resId } = useParams(); // Get the id from the URL parameters
   const resById = useRetaurantMenu(resId)
   const myAllResMenuuData = useCustomHookWithHigherOrderFun()
+  const [showIndex, setShowIndex] = useState()
 
   return (
     <>
@@ -33,9 +35,14 @@ const RestaurantMenu = () => {
       </ul>
         <div  className="mt-8">
           {
-            myAllResMenuuData.map((category) => 
+            myAllResMenuuData.map((category, index) => 
             (
-              <RestaurantCategory data={category.card.card}/>
+              <RestaurantCategory 
+              key={category.card.card.title}
+              data={category.card.card} 
+              showItem={index === showIndex ? true : false}
+              setShowIndex = {() => setShowIndex(index) }
+              />
           ))}
         </div>  
         
