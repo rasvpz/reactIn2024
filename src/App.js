@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {lazy, Suspense, useEffect, useState} from "react";
 import ReactDom from "react-dom/client";
 import Header from "./components/Header"
 import Body from "./components/Body"
@@ -7,17 +7,30 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu"
+import InputBox from "./components/InputBox";
+import UserContext from "./utils/useContext";
 // css Object start here
 
 //  Bundling syntax below
 const Grocery = lazy(() => import("./components/GroceryForBundling"))
 
 const AppLayout = () => {
+    const [userName, setUserName] = useState('');
+    
+    useEffect(() => {
+      const data = {
+        name: 'defaultUser'
+      };
+      setUserName(data.name);
+    }, []);
+
     return(
+        <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
         <div className="app">
             <Header />
             <Outlet />
         </div>
+        </UserContext.Provider>
     )
 }
 
@@ -52,6 +65,11 @@ const appRouter = createBrowserRouter([
             ),
             errorElement: <Error />,
         },       
+        {    
+            path: "/user",
+            element: <InputBox />,
+            errorElement:<Error />,
+        },
         // Dynamic Routes Starts below
         {    
             path: "/restaurants/:resId",

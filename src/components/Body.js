@@ -1,7 +1,8 @@
 import RestaurantCard, {withPromptedLabel} from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/useContext";
 
 
 const Body = () => {
@@ -9,6 +10,8 @@ const Body = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchMe, setSearchMe] = useState('');
   const RestaurantCardPrompted = withPromptedLabel(RestaurantCard)
+  const { loggedInUser } = useContext(UserContext)
+
 
   useEffect(() => {
     fetchData();
@@ -50,6 +53,7 @@ const Body = () => {
           />
         </div>
         <button  className="px-4 bg-green-100 filter-btn rounded-lg" onClick={handleFilter}>Top rated restaurant</button>
+      {loggedInUser}
       </div>
       <div className="flex flex-wrap">
         {filteredData.map((restList) => (

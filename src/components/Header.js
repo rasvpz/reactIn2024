@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/useContext";
 
 const Header = () => {
   const [logButton, setLogButton] = useState("LogIn");
   const status = useOnlineStatus()
+  const { loggedInUser } = useContext(UserContext)
 
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg">
@@ -23,6 +24,7 @@ const Header = () => {
           <li className="ml-4"><Link to="/contact">Contact us</Link></li>
           <li className="ml-4"><Link to="/grocery">Grocery</Link></li>
           <li className="ml-4"><Link to="/cart">Cart</Link></li>
+          <li className="ml-4"><Link to="/user">User</Link></li>
           <li className="ml-4">
             <button
               onClick={() =>
@@ -36,7 +38,7 @@ const Header = () => {
           </li>
           <li className="ml-4">
           <button style={status === true ? {backgroundColor: 'green', color: 'white', padding:2} : {backgroundColor: 'red', color: 'white',padding:2}}>
-            {status === true ? ' Online ' : ' Offline '}
+            {status === true ? loggedInUser : ' Offline '}
           </button>
           </li>
         </ul>
