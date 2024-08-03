@@ -9,7 +9,9 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu"
 import InputBox from "./components/InputBox";
 import UserContext from "./utils/useContext";
-// css Object start here
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 //  Bundling syntax below
 const Grocery = lazy(() => import("./components/GroceryForBundling"))
@@ -25,12 +27,14 @@ const AppLayout = () => {
     }, []);
 
     return(
-        <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
-        <div className="app">
-            <Header />
-            <Outlet />
-        </div>
-        </UserContext.Provider>
+        <Provider store = {appStore}>
+            <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
+            <div className="app">
+                <Header />
+                <Outlet />
+            </div>
+            </UserContext.Provider>
+        </Provider>
     )
 }
 
@@ -68,6 +72,11 @@ const appRouter = createBrowserRouter([
         {    
             path: "/user",
             element: <InputBox />,
+            errorElement:<Error />,
+        },
+        {    
+            path: "/cart",
+            element: <Cart />,
             errorElement:<Error />,
         },
         // Dynamic Routes Starts below

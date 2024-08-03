@@ -56,13 +56,13 @@ const Body = () => {
       {loggedInUser}
       </div>
       <div className="flex flex-wrap">
-        {filteredData.map((restList) => (
-         <Link key={restList.info.id} to={"/restaurants/"+restList.info.id}> 
+        {filteredData?.map((restList) => (
+         <Link key={restList?.info?.id} to={"/restaurants/"+restList.info.id}> 
           { 
             restList?.info?.sla?.lastMileTravel < 2.5 ? (
               <RestaurantCardPrompted resData={restList}/> 
               ) : (
-                <RestaurantCard resData={restList} id={restList.info.id} />
+                <RestaurantCard resData={restList} id={restList?.info?.id} />
                 )
           }
          </Link>

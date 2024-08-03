@@ -2,7 +2,6 @@ import { useState } from "react";
 import AccordionsItemLists from "./AccordionsItemLists";
 
 const RestaurantCategory = ({data,showItem, setShowIndex}) => {
-    console.log("onClick", showItem)
     // const  [hideShow, setHideShow] = useState(showItem)
 
     const showHide = () => {
@@ -19,7 +18,7 @@ const RestaurantCategory = ({data,showItem, setShowIndex}) => {
             </span>
             <span>{showItem ? downArrowhead : "^"}</span>
             </div>
-            {showItem && <AccordionsItemLists items = {data?.itemCards} />}
+            {showItem && <AccordionsItemLists items = {data?.itemCards} label={"Add +"}/>}
           </div>
         </div>
     )
